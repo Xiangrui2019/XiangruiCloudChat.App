@@ -37,7 +37,7 @@ const routes: Routes = [
     { path: 'changepassword', component: ChangePasswordComponent },
     { path: 'discover', component: DiscoverComponent },
     { path: 'devices', component: DevicesComponent },
-    { path: 'theme' , component: ThemeComponent},
+    { path: 'theme' , component: ThemeComponent}
 ];
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
