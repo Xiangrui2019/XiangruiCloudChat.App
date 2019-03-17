@@ -1,0 +1,41 @@
+<app-header title="祥瑞云易信" Button="true" ButtonIcon="search" RouterLink="/addfriend"></app-header>
+<div id="main">
+    <div class="conversation" *ngFor="let inf of cacheService.cachedData.conversations" (click)="talk(inf.conversationId, inf.unReadAmount)">
+        <img class="user-img" src="{{inf.avatarURL ? inf.avatarURL : loadingImgURL}}?w=100&h=100" (click)="detail(inf)"/>
+        <div *ngIf="inf.unReadAmount > 0 && inf.unReadAmount < 100" class="dot" [ngClass]="inf.muted ? 'bluedot' : 'reddot'">
+            {{inf.unReadAmount}}
+        </div>
+        <div *ngIf="inf.unReadAmount > 99" class="dot" [ngClass]="inf.muted ? 'bluedot' : 'reddot'">
+            99+
+        </div>
+        <div class="sender">
+            {{inf.displayName}}
+        </div>
+        <div class="last-time">
+            {{inf.latestMessageTime | date:'shortTime'}}
+        </div>
+        <div class="last-message" *ngIf="inf.latestMessage != null">
+            {{inf.latestMessage}}
+        </div>
+        <div class="last-message" *ngIf="inf.latestMessage == null" i18n="@@NoMessage">
+            暂时没有任何消息, 开始聊天吧!
+        </div>
+    </div>
+    <div *ngIf="cacheService.cachedData.conversations && cacheService.cachedData.conversations.length == 0">
+        <br />       
+        <br />
+        <br />
+        <div style="text-a: center;">
+            <p id="showmessage">您没有任何好友, 添加好友并开始聊天吧!</p>
+        </div>
+        <div>
+            <div class="buttons">
+            <button class="button primary" routerLink="/addfriend">搜索并添加新的好友</button>
+            </div>
+            <div class="buttons">
+                <button class="button primary" routerLink="/join-group">搜索并添加新的群聊</button>
+            </div>
+        </div>
+</div>
+<div class="holder"></div>
+<app-nav></app-nav>

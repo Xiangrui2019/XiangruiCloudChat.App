@@ -1,0 +1,33 @@
+<div class="signin-back">
+    <div class="auth-page">
+        <div class="auth-header">
+            <img src="assets/144x144.png">
+            <h1>祥瑞云易信</h1>
+        </div>
+        <div class="auth-content">
+            <div class="selector mode">
+                <div class="column">
+                    <a class="btn" routerLink="/signin">登录</a>
+                </div>
+                <div class="column">
+                    <a class="btn" routerLink="/register">注册</a>
+                </div>
+            </div>
+            <form (ngSubmit)="signin()" #loginForm="ngForm">
+                <input [(ngModel)]="email" name="phonenummber" type="text" placeholder="请输入电话号码" required #emailInput="ngModel">
+                <div class="alert" [hidden]="emailInput.valid || emailInput.pristine">错误的电话号码!</div>
+                <input [(ngModel)]="password" name="password" type="password" minlength="6" maxlength="100" placeholder="请输入密码" autocomplete="current-password" (keyup.enter)="signin()" required #passwordInput="ngModel">
+                <div class="alert" [hidden]="passwordInput.valid || passwordInput.pristine">密码长度在6-100之间.</div>
+                <button *ngIf="!connecting" [disabled]="!loginForm.form.valid" class="button white" type="submit">
+                    登录
+                </button>
+                <button *ngIf="connecting" disabled="disabled" class="button white" type="button">
+                    登陆中...
+                </button>
+                <a class="button white login" href="{{ OAuthURL }}" *ngIf="!_electronService.isElectronApp">
+                    通过AiurSoft OAuth2.0登录
+                </a>
+            </form>
+        </div>
+    </div>
+</div>

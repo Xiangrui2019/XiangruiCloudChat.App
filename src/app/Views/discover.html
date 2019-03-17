@@ -1,0 +1,25 @@
+<app-header></app-header>
+<div class="discoverUsers result" *ngFor="let user of users" routerLink="/user/{{ user.value.id }}">
+    <img class="user-img" src="{{user.value.avatarURL ? user.value.avatarURL : loadingImgURL}}?w=80&h=80" />
+    <div class="sender">
+        {{user.value.nickName}}
+    </div>
+    <p>{{ user.key }} 与您有关系的好友</p>
+</div>
+
+<div *ngIf="users && users.length == 0">
+    <h3>
+        您没有任何好友, 我们无法给您推荐好友, 添加一些好友或群组后再试!
+    </h3>
+    <div class="buttons">
+        <button class="button primary" routerLink="/addfriend" replaceUrl>搜索用户并添加为好友</button>
+    </div>
+    <div class="buttons">
+        <button class="button primary" routerLink="/join-group" replaceUrl>搜索群组并添加为好友</button>
+    </div>
+</div>
+
+<div class="buttons" *ngIf="!noMoreUsers">
+    <button *ngIf="!loading" class="button primary" (click)="loadMore()">加载更多</button>
+    <button *ngIf="loading" class="button primary" disabled>加载中</button>
+</div>

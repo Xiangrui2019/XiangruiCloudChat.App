@@ -1,0 +1,28 @@
+﻿<app-header title="好友请求" returnButton="true"></app-header>
+<div *ngIf="cacheService.cachedData.requests && cacheService.cachedData.requests.length === 0; else hasRequests" class="friendrequests">
+    <h3>现在没有任何好友请求.</h3>
+</div>
+<ng-template #hasRequests>
+    <div *ngFor="let request of cacheService.cachedData.requests" class="friendrequests">
+            <img class="user-img" src="{{request.creator.avatarURL ? request.creator.avatarURL : loadingImgURL}}?w=100&h=100">
+            <div class="name">
+                {{request.creator.nickName}}
+            </div>
+
+            <div class="time">
+                {{request.createTime | date:'short'}}
+            </div>
+
+            <div class="decision">
+                <div class="Completed" *ngIf="request.completed; else elseblock">
+                    <label disabled="disabled">已完成!</label>
+                </div>
+
+                <ng-template #elseblock>
+                    <button class="button success" (click)="accept(request.id)">同意</button>
+                    <button class="button warning" (click)="decline(request.id)">拒绝</button>
+                </ng-template>
+
+            </div>
+        </div>
+</ng-template>

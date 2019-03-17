@@ -1,0 +1,28 @@
+<div class="signin-back">
+    <div class="auth-page">
+        <div class="auth-header">
+            <img src="assets/144x144.png">
+            <h1>祥瑞云易信</h1>
+        </div>
+        <div class="auth-content">
+            <div class="selector mode register">
+                <div class="column">
+                    <a class="btn" routerLink="/signin">登录</a>
+                </div>
+                <div class="column">
+                    <a class="btn" routerLink="/register">注册</a>
+                </div>
+            </div>
+            <form (ngSubmit)="register()" #registerForm="ngForm">
+                <input [(ngModel)]="email" name="phonenumber" type="text" placeholder="请输入电话号码" required #emailInput="ngModel">
+                <div class="alert" [hidden]="emailInput.valid || emailInput.pristine">错误的电话号码!</div>
+                <input [(ngModel)]="password" name="password" type="password" minlength="6" maxlength="100"  placeholder="请输入密码" autocomplete="new-password" required #passwordInput="ngModel" (ngModelChange)="checkSame()">
+                <div class="alert" [hidden]="passwordInput.valid || passwordInput.pristine">密码的长度必须在 6 - 100之间.</div>
+                <input [(ngModel)]="confirmPassword" id="confirmInput" name="confirmPassword" minlength="6" maxlength="100" type="password" placeholder="请输入确认密码" autocomplete="new-password" (keyup.enter)="register()" (ngModelChange)="checkSame()" required #confirmInput="ngModel">
+                <div class="alert" [hidden]="samePassword || confirmInput.pristine">密码不匹配.</div>
+                <button *ngIf="!connecting" [disabled]="!registerForm.form.valid || !samePassword" class="button white" i18n="@@Register" type="submit">注册</button>
+                <button *ngIf="connecting" class="button white" i18n="@@Registering" type="button">注册中...</button>
+            </form>
+        </div>
+    </div>
+</div>

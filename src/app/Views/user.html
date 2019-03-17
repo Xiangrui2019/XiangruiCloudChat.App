@@ -1,0 +1,36 @@
+<app-header title="好友信息" returnButton="true"></app-header>
+<div *ngIf="info" class="user">
+    <a class="user-img" href="{{ info.avatarURL ? info.avatarURL : loadingImgURL }}" target="_blank" rel="noopener noreferrer">
+        <img class="user-img" src="{{ info.avatarURL ? info.avatarURL : loadingImgURL }}?w=100&h=100">
+    </a>
+    <div class="name">
+        {{ info.nickName }}
+    </div>
+    <div class="bio">
+        个性签名: {{ info.bio }}
+    </div>
+    <div class="email">
+        {{ info.email }}
+    </div>
+</div>
+
+
+<div class="menu-holder"></div>
+<div class="menu-button" (click)="report()" *ngIf="info && messageService.me && info.id != messageService.me.id">
+    <div class="img">
+        <i class="fa fa-gavel "></i>
+    </div>
+    <div class="text" i18n="@@Report">举报</div>
+</div>
+<div class="menu-button" *ngIf="info && messageService.me && areFriends && info.id != messageService.me.id" (click)="delete(info.id)">
+    <div class="img">
+        <i class="fa fa-trash warning"></i>
+    </div>
+    <div class="text warning" i18n="@@Delete">删除好友</div>
+</div>
+<div class="menu-holder"></div>
+
+<div class="buttons">
+    <button class="button success" *ngIf="info && !areFriends" (click)="request(info.id)" i18n="@@SendFriendRequest">发送好友请求</button>
+    <button class="button success" *ngIf="info && areFriends" routerLink="/talking/{{ conversationId }}" i18n="@@Message">聊天消息</button>
+</div>

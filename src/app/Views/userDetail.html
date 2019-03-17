@@ -1,0 +1,30 @@
+<app-header title="Edit profile" returnButton="true" RouterLink="/"></app-header>
+<div *ngIf="user">
+  <div class="profile avatar">
+      <label>头像</label>
+      <a class="user-img" href="{{user ? user.avatarURL : loadingImgURL}}" target="_blank">
+        <img src="{{user.avatarURL ? user.avatarURL : loadingImgURL}}?w=140&h=140">
+      </a>
+      <label id="upload" class="button primary inputButton" for="image">上传新的头像</label>
+      <input type="file" name="image" id="image" #imageInput (change)="uploadAvatar()" accept="image/png, image/jpeg, image/bmp" />
+    </div>
+  <div class="profile">
+    <label>昵称</label>
+    <input [(ngModel)]="user.nickName" placeholder="请输入新的昵称" type="text" (keyup.enter)="save()" />
+  </div>
+  <div class="profile">
+    <label>个性签名</label>
+    <input [(ngModel)]="user.bio" placeholder="请输入新的个性签名" type="text" (keyup.enter)="save()" />
+  </div>
+
+  <div class="profile avatar">
+    <div class="text">隐藏电话号码</div>
+    <div class="email">{{ this.user.email }}</div>
+    <input id="toggleHideEmail" class="tgl" type="checkbox" [checked]="!user.makeEmailPublic"/>
+    <label for="toggleHideEmail" class="tgl-btn"></label>
+  </div>
+  <div class="buttons">
+    <button id="save" class="button primary" (click)="save()" i18n="@@save">保存</button>
+  </div>
+</div>
+<progress *ngIf="uploadService.uploading" max="100" value={{uploadService.progress}}></progress>

@@ -1,0 +1,26 @@
+﻿<app-header title="添加好友" returnButton="true"></app-header>
+<div class="search-part">
+    <input placeholder="请输入好友的昵称或电话号码" type="text" #friendSearch (keyup)="search(friendSearch.value, 0)" />
+</div>
+<div class="search-holder"></div>
+
+<div class="buttons" *ngIf="friendSearch.value.trim().length < 3 && friendSearch.value.trim().length > 0">
+    <button *ngIf="!searching" class="button primary" (click)="search(friendSearch.value, 1)">搜索</button>
+    <button *ngIf="searchMode == 1 && searching" class="button primary" disabled>搜索中</button>
+</div>
+
+<h3 *ngIf="resultLength == 0">
+    没有任何结果, 请尝试更换昵称, 可能昵称输入错误!
+</h3>
+
+<div class="result" *ngFor="let user of users | async" routerLink="/user/{{ user.id }}">
+    <img class="user-img" src="{{user.avatarURL ? user.avatarURL : loadingImgURL}}?w=80&h=80" />
+    <div class="sender">
+        {{user.nickName}}
+    </div>
+</div>
+
+<div class="buttons" *ngIf="!noMoreUsers && resultLength > 0">
+    <button *ngIf="!searching" class="button primary" (click)="search(friendSearch.value, 2)">加载更多</button>
+    <button *ngIf="searchMode == 2 && searching" class="button primary" disabled>加载中.....</button>
+</div>

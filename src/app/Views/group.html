@@ -1,0 +1,52 @@
+<app-header title="群聊信息" returnButton="true"></app-header>
+<div *ngIf="conversation" class="user">
+    <a class="user-img groupGridRow" href="{{conversation.avatarURL ? conversation.avatarURL : loadingImgURL}}" target="_blank" rel="noopener noreferrer">
+        <img class="user-img groupGridRow" src="{{conversation.avatarURL ? conversation.avatarURL : loadingImgURL}}?w=100&h=100">
+    </a>
+    <div class="name">
+        {{conversation.displayName}}
+    </div>
+    <div class="create-time">
+        创建时间: {{conversation.conversationCreateTime | date:'mediumDate'}}
+    </div>
+</div>
+
+<div class="menu-holder"></div>
+<div class="menu-button" routerLink="/talking/{{ conversation ? conversation.id : 0 }}">
+    <div class="img">
+        <i class="fa fa-comments"></i>
+    </div>
+    <div class="text">进入聊天</div>
+</div>
+<div class="menu-button notification" (click)="mute()">
+    <div class="img">
+        <i *ngIf="muted" class="fa fa-bell-slash"></i>
+        <i *ngIf="!muted" class="fa fa-bell"></i>
+    </div>
+    <div class="text" i18n="@@Notification">消息提醒</div>
+    <input id="toggleMute" class="tgl" type="checkbox" [checked]="!muted" (click)="mute()"/>
+    <label for="toggleMute" class="tgl-btn"></label>
+</div>
+<div class="menu-holder"></div>
+<div *ngIf="conversation">
+    <div class="menu-button">
+        <div class="img">
+            <i class="fa fa-users"></i>
+        </div>
+        <div class="text">群里有 {{ groupMembers }} 人</div>
+    </div>
+    <div class="menu-button" *ngFor="let e of conversation.users" routerLink="/user/{{ e.userId }}">
+        <img class="img" src="{{e.user.avatarURL ? e.user.avatarURL : loadingImgURL}}?w=72&h=72">
+        <div class="text">
+            {{e.user.nickName}}
+        </div>
+    </div>
+</div>
+<div class="menu-holder"></div>
+<div class="menu-button" (click)="leaveGroup(conversation.displayName)">
+    <div class="img">
+        <i class="fa fa-sign-out warning"></i>
+    </div>
+    <div class="text warning">退出群聊</div>
+</div>
+<div class="menu-holder"></div>

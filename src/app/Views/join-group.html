@@ -1,0 +1,25 @@
+<app-header title="Join Group" i18n-title="@@JoinGroup" returnButton="true"></app-header>
+
+<div class="search-part">
+    <input placeholder="请输入群聊名称" type="text" #groupSearch (keyup)="search(groupSearch.value, false)"/>
+</div>
+<div class="search-holder"></div>
+
+<h3 *ngIf="resultLength == 0">
+    没有任何结果, 请检查群聊名称是否正确
+</h3>
+
+<div class="result" *ngFor="let group of groups | async" (click)="joinGroup(group.groupName, group.hasPassword)">
+    <div class="searchGroupIamge">
+        <img class="user-img" src="{{group.avatarURL ? group.avatarURL : loadingImgURL}}?w=80&h=80" />
+        <i class="fa fa-lock" aria-hidden="true" *ngIf="group.hasPassword"></i>
+    </div>
+    <div class="sender">
+        {{group.groupName}}
+    </div>
+</div>
+
+<div class="buttons" *ngIf="!noMoreGroups && resultLength > 0">
+    <button *ngIf="!searching" class="button primary" (click)="search(groupSearch.value, true)">Load More</button>
+    <button *ngIf="searchMode && searching" class="button primary" disabled>Loading</button>
+</div>

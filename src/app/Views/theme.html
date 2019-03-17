@@ -1,0 +1,18 @@
+<app-header></app-header>
+<div class="menu-button" (click)="changeTheme(0)">
+    <div class="text">明亮色系</div>
+    <div class="img checked"
+    [style.visibility]="currentTheme === 0 ? 'visible' : 'hidden'"
+    >
+        <i class="fa fa-check"></i>
+    </div>
+</div>
+<div class="menu-button" (click)="changeTheme(1)"
+>
+    <div class="text">黑暗色系</div>
+    <div class="img checked"
+    [style.visibility]="currentTheme === 1 ? 'visible':'hidden'"
+    >
+        <i class="fa fa-check"></i>
+    </div>
+</div>
