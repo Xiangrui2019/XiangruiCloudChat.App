@@ -7,7 +7,6 @@
     "start": "npm run prebuild && ng serve --open",
     "prebuild": "ts-node version.ts",
     "build": "ng build --base-href /",
-    "lint": "ng lint --type-check && tsc",
     "prod": "npm run prebuild && ng build --base-href / --prod --output-hashing none"
   },
   "dependencies": {
