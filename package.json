@@ -1,7 +1,6 @@
 {
   "name": "XiangruiCloudChat",
   "version": "1.0.0",
-  "description": "XiangruiCloudChat is P2P Encrypt Bussius Messager Application.",
   "license": "MIT",
   "scripts": {
     "start": "npm run prebuild && ng serve --open",
