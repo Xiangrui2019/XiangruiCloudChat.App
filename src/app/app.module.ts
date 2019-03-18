@@ -1,3 +1,4 @@
+import { HomeApiService } from './Services/HomeApiService';
 // Modules
 import { AppRoutingModule } from './Modules/AppRoutingModule';
 import { NgModule } from '@angular/core';
@@ -84,7 +85,8 @@ import { HeaderService } from './Services/HeaderService';
         GroupsApiService,
         MessageService,
         InitService,
-        HeaderService
+        HeaderService,
+        HomeApiService
     ],
     bootstrap: [AppComponent]
 })

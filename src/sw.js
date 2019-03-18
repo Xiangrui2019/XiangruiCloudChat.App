@@ -80,13 +80,13 @@ self.addEventListener('push', function(event) {
         
         message = CryptoJS.AES.decrypt(message, aesKey).toString(CryptoJS.enc.Utf8);
         if (message.startsWith('[img]')) {
-            message = 'Photo';
+            message = '图片';
         } else if (message.startsWith('[video]')) {
-            message = 'Video';
+            message = '视频';
         } else if (message.startsWith('[file]')) {
-            message = 'File';
+            message = '文件';
         } else if (message.startsWith('[audio]')) {
-            message = 'Audio';
+            message = '语音';
         }
 
         let showNotification = true;
