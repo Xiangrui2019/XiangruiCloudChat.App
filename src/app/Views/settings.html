@@ -1,12 +1,5 @@
 <app-header title="我的"></app-header>
 
-<script>
-    var sharebuttton = document.getElementById("share");
-    sharebuttton.addEventListener("click", function () {
-        alert("dffsd");
-    });
-</script>
-
 <div class="user" routerLink="/userInfo" *ngIf="messageService.me">
     <img class="user-img" src="{{ messageService.me.avatarURL}}?w=100&h=100 ">
     <div class="name">
@@ -36,9 +29,16 @@
 </div>
 <div class="menu-button">
     <div class="img">
-        <i class="fa fa-send" aria-hidden="true"></i>
+        <i class="fa fa-bug" aria-hidden="true"></i>
     </div>
     <div class="text"><a href="https://github.com/Xiangrui2019/XiangruiCloudChat.Server/issues/new">反馈问题到GitHub</a></div>
+</div>
+<!--http://t.cn/EJPUpCN-->
+<div class="menu-button">
+    <div class="img">
+        <i class="fa fa-random" aria-hidden="true"></i>
+    </div>
+    <div class="text"><a (click)="share()">邀请好友使用本软件</a></div>
 </div>
 <div class="menu-button" routerLink="/theme">
     <div class="img">

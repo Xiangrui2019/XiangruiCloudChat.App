@@ -87,9 +87,19 @@ export class SettingsComponent implements OnInit {
         const success = (_data) => {
             Swal.fire('很棒', '您的网络连接正常', 'success');
         };
-        const error = (_err)=> {
+        const error = (_err) => {
             Swal.fire('错误', '您的网络连接出现了问题', 'error');
         };
         this.homeApiService.Ping().subscribe(success, error);
+    }
+
+    public share() {
+        // tslint:disable-next-line:max-line-length
+        const message = `您好, 您的好友${this.messageService.me.nickName} 推荐您使用祥瑞云易信, 已获得更加优秀的安全通信和用户体验. 请使用Chrome Firefox打开 http://t.cn/EJPUpCN 使用.`;
+
+        Swal.fire('成功', '请复制下面的文字, 使用短信或其他方式发送给您的好友!', 'success')
+            .then(() => {
+                Swal.fire('请复制文字', message, 'success');
+            });
     }
 }
