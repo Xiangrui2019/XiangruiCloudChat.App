@@ -1,5 +1,12 @@
 <app-header title="我的"></app-header>
 
+<script>
+    var sharebuttton = document.getElementById("share");
+    sharebuttton.addEventListener("click", function () {
+        alert("dffsd");
+    });
+</script>
+
 <div class="user" routerLink="/userInfo" *ngIf="messageService.me">
     <img class="user-img" src="{{ messageService.me.avatarURL}}?w=100&h=100 ">
     <div class="name">
