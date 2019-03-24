@@ -7,7 +7,6 @@ import { MessageService } from '../Services/MessageService';
 import { HeaderService } from '../Services/HeaderService';
 import Swal from 'sweetalert2';
 import { ElectronService } from 'ngx-electron';
-import { HomeApiService } from '../Services/HomeApiService';
 
 @Component({
     templateUrl: '../Views/settings.html',
@@ -17,8 +16,6 @@ import { HomeApiService } from '../Services/HomeApiService';
 })
 export class SettingsComponent implements OnInit {
     public loadingImgURL = Values.loadingImgURL;
-    // tslint:disable-next-line:max-line-length
-    public sharefriendsmessage = `您好, 您的好友${this.messageService.me.nickName} 推荐您使用祥瑞云易信, 已获得更加优秀的安全通信和用户体验. 请使用Chrome Firefox打开 http://t.cn/EJPUpCN 使用.`;
 
     constructor(
         private authApiService: AuthApiService,
@@ -26,8 +23,7 @@ export class SettingsComponent implements OnInit {
         private initSerivce: InitService,
         public messageService: MessageService,
         private headerService: HeaderService,
-        private _electronService: ElectronService,
-        private homeApiService: HomeApiService) {
+        private _electronService: ElectronService) {
             this.headerService.title = '我的';
             this.headerService.returnButton = false;
             this.headerService.button = false;
@@ -84,19 +80,5 @@ export class SettingsComponent implements OnInit {
                 Swal.fire('退出出现错误', e.message, 'error');
             }
         });
-    }
-
-    public pingnetwork(): void {
-        const success = (_data) => {
-            Swal.fire('很棒', '您的网络连接正常', 'success');
-        };
-        const error = (_err) => {
-            Swal.fire('错误', '您的网络连接出现了问题', 'error');
-        };
-        this.homeApiService.Ping().subscribe(success, error);
-    }
-
-    public share() {
-        Swal.fire('成功', '我们已经把文字复制到了您的剪贴板, 请粘贴到短信或其他渠道发送给您的好友!', 'success');
     }
 }

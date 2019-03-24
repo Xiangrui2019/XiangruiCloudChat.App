@@ -29,6 +29,7 @@ import { ChangePasswordComponent } from './Controllers/changePassword.component'
 import { DevicesComponent } from './Controllers/devices.component';
 import { ThemeComponent } from './Controllers/theme.component';
 import { NewsComponent } from './Controllers/news.component';
+import { ExtistionsComponent } from './Controllers/extistions.component';
 // Services
 import { ApiService } from './Services/ApiService';
 import { ParamService } from './Services/ParamService';
@@ -74,7 +75,8 @@ import { HeaderService } from './Services/HeaderService';
         ChangePasswordComponent,
         DevicesComponent,
         ThemeComponent,
-        NewsComponent
+        NewsComponent,
+        ExtistionsComponent
     ],
     providers: [
         ApiService,

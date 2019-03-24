@@ -18,6 +18,7 @@ import { DiscoverComponent } from '../Controllers/discover.component';
 import { DevicesComponent } from '../Controllers/devices.component';
 import { ThemeComponent } from '../Controllers/theme.component';
 import { NewsComponent } from '../Controllers/news.component';
+import { ExtistionsComponent } from '../Controllers/extistions.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/conversations', pathMatch: 'full' },
@@ -39,7 +40,8 @@ const routes: Routes = [
     { path: 'discover', component: DiscoverComponent },
     { path: 'devices', component: DevicesComponent },
     { path: 'theme' , component: ThemeComponent},
-    { path: 'news', component: NewsComponent }
+    { path: 'news', component: NewsComponent },
+    { path: 'extistions', component: ExtistionsComponent }
 ];
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
