@@ -37,7 +37,7 @@
     <div class="img">
         <i class="fa fa-random" aria-hidden="true"></i>
     </div>
-    <div class="text"><a (click)="share()">邀请好友使用本软件</a></div>
+    <div class="text"><a ngxClipboard [cbContent]="sharefriendsmessage" (cbOnSuccess)="share()">邀请好友使用本软件</a></div>
 </div>
 <div class="menu-button" routerLink="/news">
     <div class="img">

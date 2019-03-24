@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxElectronModule } from 'ngx-electron';
+import { ClipboardModule } from 'ngx-clipboard';
 // Component
 import { AppComponent } from './Controllers/app.component';
 import { ConversationsComponent } from './Controllers/conversations.component';
@@ -49,7 +50,8 @@ import { HeaderService } from './Services/HeaderService';
         FormsModule,
         HttpClientModule,
         AppRoutingModule,
-        NgxElectronModule
+        NgxElectronModule,
+        ClipboardModule
     ],
     declarations: [
         AboutComponent,

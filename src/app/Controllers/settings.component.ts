@@ -17,6 +17,9 @@ import { HomeApiService } from '../Services/HomeApiService';
 })
 export class SettingsComponent implements OnInit {
     public loadingImgURL = Values.loadingImgURL;
+    // tslint:disable-next-line:max-line-length
+    public sharefriendsmessage = `您好, 您的好友${this.messageService.me.nickName} 推荐您使用祥瑞云易信, 已获得更加优秀的安全通信和用户体验. 请使用Chrome Firefox打开 http://t.cn/EJPUpCN 使用.`;
+
     constructor(
         private authApiService: AuthApiService,
         private router: Router,
@@ -94,12 +97,6 @@ export class SettingsComponent implements OnInit {
     }
 
     public share() {
-        // tslint:disable-next-line:max-line-length
-        const message = `您好, 您的好友${this.messageService.me.nickName} 推荐您使用祥瑞云易信, 已获得更加优秀的安全通信和用户体验. 请使用Chrome Firefox打开 http://t.cn/EJPUpCN 使用.`;
-
-        Swal.fire('成功', '请复制下面的文字, 使用短信或其他方式发送给您的好友!', 'success')
-            .then(() => {
-                Swal.fire('请复制文字', message, 'success');
-            });
+        Swal.fire('成功', '我们已经把文字复制到了您的剪贴板, 请粘贴到短信或其他渠道发送给您的好友!', 'success');
     }
 }

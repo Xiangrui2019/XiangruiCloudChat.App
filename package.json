@@ -1,6 +1,6 @@
 {
   "name": "XiangruiCloudChat",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "license": "MIT",
   "scripts": {
     "start": "npm run prebuild && ng serve --open",
@@ -29,6 +29,7 @@
     "crypto-js": "^3.1.9-1",
     "font-awesome": "^4.7.0",
     "he": "^1.2.0",
+    "ngx-clipboard": "^12.0.0",
     "ngx-electron": "^2.1.1",
     "rxjs": "^6.4.0",
     "smoothscroll-polyfill": "^0.4.3",
