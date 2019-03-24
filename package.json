@@ -1,6 +1,6 @@
 {
   "name": "XiangruiCloudChat",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "MIT",
   "scripts": {
     "start": "npm run prebuild && ng serve --open",
