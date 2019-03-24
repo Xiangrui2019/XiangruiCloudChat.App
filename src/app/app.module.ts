@@ -27,6 +27,7 @@ import { GroupComponent } from './Controllers/group.component';
 import { ChangePasswordComponent } from './Controllers/changePassword.component';
 import { DevicesComponent } from './Controllers/devices.component';
 import { ThemeComponent } from './Controllers/theme.component';
+import { NewsComponent } from './Controllers/news.component';
 // Services
 import { ApiService } from './Services/ApiService';
 import { ParamService } from './Services/ParamService';
@@ -70,7 +71,8 @@ import { HeaderService } from './Services/HeaderService';
         GroupComponent,
         ChangePasswordComponent,
         DevicesComponent,
-        ThemeComponent
+        ThemeComponent,
+        NewsComponent
     ],
     providers: [
         ApiService,
