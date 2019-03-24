@@ -1,1 +1,11 @@
-<app-header title="关于" returnButton="true" RouterLink="/"></app-header>
+<app-header title="新闻" returnButton="true" RouterLink="/"></app-header>
+<div class="result" *ngFor="let newpaper of news">
+    <img class="user-img" src="{{newpaper.media_info.avatar_url}}" />
+    <div class="sender">
+        <a href="{{newpaper.article_url}}">{{newpaper.title}}</a>
+    </div>
+</div>
+
+<div class="buttons">
+    <button class="button primary" (click)="updateNews()">加载更多</button>
+</div>
