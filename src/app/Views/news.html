@@ -1,6 +1,6 @@
 <app-header title="新闻" returnButton="true" RouterLink="/"></app-header>
 <div class="result" *ngFor="let newpaper of news">
-    <img class="user-img" src="{{newpaper.media_info.avatar_url}}" />
+    <img class="user-img" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553434671104&di=2847be98cc41cdbfd6a960566c0cb6d5&imgtype=0&src=http%3A%2F%2Fis4.mzstatic.com%2Fimage%2Fthumb%2FPurple122%2Fv4%2F6b%2F35%2Fbd%2F6b35bda4-5475-ca6e-4829-ae64ddb1a570%2Fsource%2F512x512bb.jpg" />
     <div class="sender">
         <a href="{{newpaper.article_url}}">{{newpaper.title}}</a>
     </div>
