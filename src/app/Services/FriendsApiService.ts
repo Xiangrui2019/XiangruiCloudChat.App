@@ -58,4 +58,8 @@ export class FriendsApiService {
     public Discover(amount: number): Observable<AiurCollection<DiscoverUser>> {
         return this.apiService.Get(FriendsApiService.serverPath + '/DiscoverFriends?take=' + amount);
     }
+
+    public FriendIsOnline(id: string): Observable<AiurProtocal> {
+        return this.apiService.Get(FriendsApiService.serverPath + '/FriendIsOnline?id=' + id);
+    }
 }

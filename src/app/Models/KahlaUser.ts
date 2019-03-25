@@ -10,4 +10,5 @@
     public preferedLanguage: string;
     public sex: string;
     public makeEmailPublic: boolean;
+    public isOnline: boolean;
 }

@@ -121,6 +121,7 @@ export class TalkingComponent implements OnInit, OnDestroy {
                     document.querySelector('app-header').setAttribute('title', conversation.displayName);
                     this.messageService.getMessages(true, this.conversationID, -1, this.unread);
                     this.headerService.title = conversation.displayName;
+
                     this.headerService.button = true;
                     if (conversation.anotherUserId) {
                         this.headerService.buttonIcon = 'user';

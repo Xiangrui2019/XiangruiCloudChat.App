@@ -21,6 +21,8 @@ export class UserComponent implements OnInit {
     public conversationId: number;
     public areFriends: boolean;
     public loadingImgURL = Values.loadingImgURL;
+    public isonline = 'false';
+
     constructor(
         private route: ActivatedRoute,
         private friendsApiService: FriendsApiService,
@@ -43,6 +45,9 @@ export class UserComponent implements OnInit {
                 this.conversationId = response.conversationId;
                 this.areFriends = response.areFriends;
                 this.info.avatarURL = Values.fileAddress + this.info.headImgFileKey;
+                this.friendsApiService.FriendIsOnline(this.info.id).subscribe((data) => {
+                    this.isonline = data.message.toLowerCase();
+                });
             });
     }
 

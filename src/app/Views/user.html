@@ -5,6 +5,8 @@
     </a>
     <div class="name">
         {{ info.nickName }}
+        <label class="badge badge-primary" *ngIf="isonline == 'true'">在线</label>
+        <label class="badge badge-danger" *ngIf="isonline == 'false'">不在线</label>
     </div>
     <div class="bio">
         个性签名: {{ info.bio }}
