@@ -35,10 +35,10 @@
         </div>
         <div class="text">群里有 {{ groupMembers }} 人</div>
     </div>
-    <div class="menu-button" *ngFor="let e of conversation.users" routerLink="/user/{{ e.userId }}">
+    <div class="menu-button" *ngFor="let e of users" routerLink="/user/{{ e.userId }}">
         <img class="img" src="{{e.user.avatarURL ? e.user.avatarURL : loadingImgURL}}?w=72&h=72">
         <div class="text">
-            {{e.user.nickName}}
+            {{e.user.nickName}}[{{e['isonline']}}]
         </div>
     </div>
 </div>

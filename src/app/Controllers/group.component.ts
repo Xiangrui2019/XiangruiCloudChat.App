@@ -1,3 +1,4 @@
+import { FriendsApiService } from './../Services/FriendsApiService';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { GroupsApiService } from '../Services/GroupsApiService';
@@ -24,6 +25,7 @@ export class GroupComponent implements OnInit {
     public loadingImgURL = Values.loadingImgURL;
     public muted: boolean;
     public muting = false;
+    public users = [];
 
     constructor(
         private route: ActivatedRoute,
@@ -32,7 +34,8 @@ export class GroupComponent implements OnInit {
         private router: Router,
         private cache: CacheService,
         private headerService: HeaderService,
-        private messageService: MessageService
+        private messageService: MessageService,
+        public friendsApiService: FriendsApiService
     ) {
         this.headerService.title = '群聊信息';
         this.headerService.returnButton = true;
@@ -48,6 +51,16 @@ export class GroupComponent implements OnInit {
             )
             .subscribe(conversation => {
                 this.conversation = conversation;
+                this.conversation.users.forEach(user => {
+                    this.friendsApiService.FriendIsOnline(user.userId).subscribe((dx) => {
+                        if (dx['message'].toLowerCase() === 'true') {
+                            user['isonline'] = '在线';
+                        } else {
+                            user['isonline'] = '不在线';
+                        }
+                    });
+                    this.users.push(user);
+                });
                 this.groupMembers = conversation.users.length;
                 this.conversation.avatarURL = Values.fileAddress + (<GroupConversation>this.conversation).groupImageKey;
                 this.conversation.users.forEach(user => {
