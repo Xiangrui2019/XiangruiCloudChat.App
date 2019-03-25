@@ -1,4 +1,5 @@
-﻿import { Component, OnInit, OnDestroy, ElementRef, ViewChild, HostListener } from '@angular/core';
+﻿import { FriendsApiService } from './../Services/FriendsApiService';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild, HostListener } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ConversationApiService } from '../Services/ConversationApiService';
 import { Message } from '../Models/Message';
@@ -48,7 +49,8 @@ export class TalkingComponent implements OnInit, OnDestroy {
         private conversationApiService: ConversationApiService,
         public uploadService: UploadService,
         public messageService: MessageService,
-        private headerService: HeaderService
+        private headerService: HeaderService,
+        private friendapiService: FriendsApiService
     ) {}
 
     @HostListener('window:scroll', [])
@@ -117,10 +119,22 @@ export class TalkingComponent implements OnInit, OnDestroy {
                                 this.colors[Math.floor(Math.random() * this.colors.length)]]);
                         });
                     }
+
                     this.messageService.conversation = conversation;
                     document.querySelector('app-header').setAttribute('title', conversation.displayName);
                     this.messageService.getMessages(true, this.conversationID, -1, this.unread);
-                    this.headerService.title = conversation.displayName;
+
+                    if (conversation.discriminator === 'GroupConversation') {
+                        this.headerService.title = conversation.displayName;
+                    } else {
+                        this.friendapiService.FriendIsOnline(conversation['requestUser']['id']).subscribe((data) => {
+                            if (data.message.toLowerCase() === 'true') {
+                                this.headerService.title = `${conversation.displayName}[对方在线]`;
+                            } else {
+                                this.headerService.title = `${conversation.displayName}[对方不在线]`;
+                            }
+                        });
+                    }
 
                     this.headerService.button = true;
                     if (conversation.anotherUserId) {
