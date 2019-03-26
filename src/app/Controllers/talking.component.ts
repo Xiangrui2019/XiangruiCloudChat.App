@@ -1,4 +1,5 @@
-﻿import { Component, OnInit, OnDestroy, ElementRef, ViewChild, HostListener } from '@angular/core';
+﻿import { FriendsApiService } from './../Services/FriendsApiService';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild, HostListener } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ConversationApiService } from '../Services/ConversationApiService';
 import { Message } from '../Models/Message';
@@ -48,7 +49,8 @@ export class TalkingComponent implements OnInit, OnDestroy {
         private conversationApiService: ConversationApiService,
         public uploadService: UploadService,
         public messageService: MessageService,
-        private headerService: HeaderService
+        private headerService: HeaderService,
+        private firendsService: FriendsApiService
     ) {}
 
     @HostListener('window:scroll', [])
@@ -121,7 +123,42 @@ export class TalkingComponent implements OnInit, OnDestroy {
                     this.messageService.conversation = conversation;
                     document.querySelector('app-header').setAttribute('title', conversation.displayName);
                     this.messageService.getMessages(true, this.conversationID, -1, this.unread);
-                    this.headerService.title = conversation.displayName;
+                    console.log(conversation);
+                    if (conversation.discriminator === 'GroupConversation') {
+                        this.headerService.title = conversation.displayName;
+                    } else {
+                            try {
+                                if (conversation['requestUser']['id'] !== this.messageService.me.id) {
+                                    this.firendsService.FriendIsOnline(conversation['requestUser']['id']).subscribe((data) => {
+                                        if (data['message'].toLowerCase() === 'true') {
+                                            this.headerService.title = `${conversation.displayName}[对方在线]`;
+                                        } else {
+                                            this.headerService.title = `${conversation.displayName}[对方不在线]`;
+                                        }
+                                    });
+                                }
+
+                                if (conversation['targetUser']['id'] !== this.messageService.me.id) {
+                                    this.firendsService.FriendIsOnline(conversation['targetUser']['id']).subscribe((data) => {
+                                        if (data['message'].toLowerCase() === 'true') {
+                                            this.headerService.title = `${conversation.displayName}[对方在线]`;
+                                        } else {
+                                            this.headerService.title = `${conversation.displayName}[对方不在线]`;
+                                        }
+                                    });
+                                }
+
+                                if (conversation['targetUser']['id'] === this.messageService.me.id) {
+                                    this.headerService.title = `${conversation.displayName}[本人]`;
+                                }
+
+                                if (conversation['requestUser']['id'] === this.messageService.me.id) {
+                                    this.headerService.title = `${conversation.displayName}[本人]`;
+                                }
+                            } catch (_error) {
+                                this.headerService.title = `${conversation.displayName}[未知]`;
+                            }
+                    }
 
                     this.headerService.button = true;
                     if (conversation.anotherUserId) {
