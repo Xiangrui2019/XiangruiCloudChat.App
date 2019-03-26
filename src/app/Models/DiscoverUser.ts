@@ -1,6 +1,6 @@
-import { KahlaUser } from './KahlaUser';
+import { XiangruiChatUser } from './XiangruiChatUser';
 
 export class DiscoverUser {
     public key: number;    // numbers of common friends
-    public value: KahlaUser;
+    public value: XiangruiChatUser;
 }

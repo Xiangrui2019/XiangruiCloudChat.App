@@ -1,4 +1,4 @@
-﻿export class KahlaUser {
+﻿export class XiangruiChatUser {
     public accountCreateTime: Date;
     public avatarURL: string;
     public bio: string;

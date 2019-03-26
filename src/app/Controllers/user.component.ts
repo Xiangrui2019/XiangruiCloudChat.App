@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FriendsApiService } from '../Services/FriendsApiService';
-import { KahlaUser } from '../Models/KahlaUser';
+import { XiangruiChatUser } from '../Models/XiangruiChatUser';
 import { CacheService } from '../Services/CacheService';
 import { switchMap,  } from 'rxjs/operators';
 import Swal from 'sweetalert2';
@@ -17,7 +17,7 @@ import { MessageService } from '../Services/MessageService';
 })
 
 export class UserComponent implements OnInit {
-    public info: KahlaUser;
+    public info: XiangruiChatUser;
     public conversationId: number;
     public areFriends: boolean;
     public loadingImgURL = Values.loadingImgURL;

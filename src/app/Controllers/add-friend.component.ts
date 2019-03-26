@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs/';
 import { FriendsApiService } from '../Services/FriendsApiService';
-import { KahlaUser } from '../Models/KahlaUser';
+import { XiangruiChatUser } from '../Models/XiangruiChatUser';
 import { debounceTime, distinctUntilChanged, switchMap, filter, map } from 'rxjs/operators';
 import { Values } from '../values';
 import { HeaderService } from '../Services/HeaderService';
@@ -13,7 +13,7 @@ import { HeaderService } from '../Services/HeaderService';
 
 })
 export class AddFriendComponent implements OnInit {
-    public users: Observable<KahlaUser[]> = new Observable<KahlaUser[]>();
+    public users: Observable<XiangruiChatUser[]> = new Observable<XiangruiChatUser[]>();
     public loadingImgURL = Values.loadingImgURL;
     private searchTerms = new BehaviorSubject<string>('');
     public searching = false;

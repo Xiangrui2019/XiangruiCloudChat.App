@@ -4,7 +4,7 @@ import { AiurCollection } from '../Models/AiurCollection';
 import { ContactInfo } from '../Models/ContactInfo';
 import { AiurProtocal } from '../Models/AiurProtocal';
 import { AiurValue } from '../Models/AiurValue';
-import { KahlaUser } from '../Models/KahlaUser';
+import { XiangruiChatUser } from '../Models/XiangruiChatUser';
 import { Request } from '../Models/Request';
 import { UserDetailViewModel } from '../Models/ApiModels/UserDetailViewModel';
 import { ApiService } from './ApiService';
@@ -40,7 +40,7 @@ export class FriendsApiService {
         return this.apiService.Get(FriendsApiService.serverPath + `/MyRequests`);
     }
 
-    public SearchFriends(nickName: string, take: number): Observable<AiurCollection<KahlaUser>> {
+    public SearchFriends(nickName: string, take: number): Observable<AiurCollection<XiangruiChatUser>> {
         return this.apiService.Get(FriendsApiService.serverPath + `/SearchFriends/?nickname=${nickName}&take=${take}`);
     }
 

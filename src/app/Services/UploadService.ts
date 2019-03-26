@@ -3,7 +3,7 @@ import { AES } from 'crypto-js';
 import { FilesApiService } from './FilesApiService';
 import Swal from 'sweetalert2';
 import { UploadFile } from '../Models/UploadFile';
-import { KahlaUser } from '../Models/KahlaUser';
+import { XiangruiChatUser } from '../Models/XiangruiChatUser';
 import { ConversationApiService } from './ConversationApiService';
 import * as loadImage from 'blueimp-load-image';
 
@@ -157,7 +157,7 @@ export class UploadService {
         }
     }
 
-    public uploadAvatar(user: KahlaUser, file: File): void {
+    public uploadAvatar(user: XiangruiChatUser, file: File): void {
         if (this.validImageType(file, true)) {
             const formData = new FormData();
             formData.append('image', file);

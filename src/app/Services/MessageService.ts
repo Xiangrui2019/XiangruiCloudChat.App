@@ -8,7 +8,7 @@ import { Message } from '../Models/Message';
 import { ConversationApiService } from './ConversationApiService';
 import { map } from 'rxjs/operators';
 import { UploadService } from './UploadService';
-import { KahlaUser } from '../Models/KahlaUser';
+import { XiangruiChatUser } from '../Models/XiangruiChatUser';
 import { AES, enc } from 'crypto-js';
 import { CacheService } from './CacheService';
 import * as he from 'he';
@@ -29,7 +29,7 @@ export class MessageService {
     public newMessages = false;
     private oldOffsetHeight: number;
     public maxImageWidth = 0;
-    public me: KahlaUser;
+    public me: XiangruiChatUser;
 
     constructor(
         private conversationApiService: ConversationApiService,

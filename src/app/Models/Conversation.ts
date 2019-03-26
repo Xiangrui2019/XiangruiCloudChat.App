@@ -1,4 +1,4 @@
-﻿import { UserGroupRelation } from './KahlaUsers';
+﻿import { UserGroupRelation } from './XiangruiChatUsers';
 
 export class Conversation {
     public id: number;

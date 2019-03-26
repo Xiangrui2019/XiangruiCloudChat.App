@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AiurValue } from '../Models/AiurValue';
-import { KahlaUser } from '../Models/KahlaUser';
+import { XiangruiChatUser } from '../Models/XiangruiChatUser';
 import { Observable } from 'rxjs/';
 import { AiurProtocal } from '../Models/AiurProtocal';
 import { InitPusherViewModel } from '../Models/ApiModels/InitPusherViewModel';
@@ -40,7 +40,7 @@ export class AuthApiService {
         return this.apiService.Get(AuthApiService.serverPath + '/SignInStatus');
     }
 
-    public Me(): Observable<AiurValue<KahlaUser>> {
+    public Me(): Observable<AiurValue<XiangruiChatUser>> {
         return this.apiService.Get(AuthApiService.serverPath + '/Me');
     }
 

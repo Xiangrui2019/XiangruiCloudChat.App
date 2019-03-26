@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthApiService } from '../Services/AuthApiService';
 import { UploadService } from '../Services/UploadService';
-import { KahlaUser } from '../Models/KahlaUser';
+import { XiangruiChatUser } from '../Models/XiangruiChatUser';
 import { AiurProtocal } from '../Models/AiurProtocal';
 import { AiurCollection } from '../Models/AiurCollection';
 import Swal from 'sweetalert2';
@@ -19,7 +19,7 @@ import { HeaderService } from '../Services/HeaderService';
 })
 
 export class UserDetailComponent implements OnInit {
-  public user: KahlaUser;
+  public user: XiangruiChatUser;
   public loadingImgURL = Values.loadingImgURL;
   @ViewChild('imageInput') public imageInput;
   constructor(
