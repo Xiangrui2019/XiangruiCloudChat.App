@@ -1,5 +1,4 @@
-﻿import { FriendsApiService } from './../Services/FriendsApiService';
-import { Component, OnInit, OnDestroy, ElementRef, ViewChild, HostListener } from '@angular/core';
+﻿import { Component, OnInit, OnDestroy, ElementRef, ViewChild, HostListener } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ConversationApiService } from '../Services/ConversationApiService';
 import { Message } from '../Models/Message';
@@ -49,8 +48,7 @@ export class TalkingComponent implements OnInit, OnDestroy {
         private conversationApiService: ConversationApiService,
         public uploadService: UploadService,
         public messageService: MessageService,
-        private headerService: HeaderService,
-        private friendapiService: FriendsApiService
+        private headerService: HeaderService
     ) {}
 
     @HostListener('window:scroll', [])
