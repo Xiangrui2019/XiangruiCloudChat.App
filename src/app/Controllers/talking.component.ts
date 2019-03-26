@@ -123,7 +123,7 @@ export class TalkingComponent implements OnInit, OnDestroy {
                     this.messageService.conversation = conversation;
                     document.querySelector('app-header').setAttribute('title', conversation.displayName);
                     this.messageService.getMessages(true, this.conversationID, -1, this.unread);
-                    console.log(conversation);
+
                     if (conversation.discriminator === 'GroupConversation') {
                         this.headerService.title = conversation.displayName;
                     } else {
