@@ -123,18 +123,7 @@ export class TalkingComponent implements OnInit, OnDestroy {
                     this.messageService.conversation = conversation;
                     document.querySelector('app-header').setAttribute('title', conversation.displayName);
                     this.messageService.getMessages(true, this.conversationID, -1, this.unread);
-
-                    if (conversation.discriminator === 'GroupConversation') {
-                        this.headerService.title = conversation.displayName;
-                    } else {
-                        this.friendapiService.FriendIsOnline(conversation['requestUser']['id']).subscribe((data) => {
-                            if (data.message.toLowerCase() === 'true') {
-                                this.headerService.title = `${conversation.displayName}[对方在线]`;
-                            } else {
-                                this.headerService.title = `${conversation.displayName}[对方不在线]`;
-                            }
-                        });
-                    }
+                    this.headerService.title = conversation.displayName;
 
                     this.headerService.button = true;
                     if (conversation.anotherUserId) {
