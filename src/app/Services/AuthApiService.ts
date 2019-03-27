@@ -92,4 +92,8 @@ export class AuthApiService {
     public MyDevices(): Observable<AiurCollection<Device>> {
         return this.apiService.Get(AuthApiService.serverPath + '/MyDevices');
     }
+
+    public MyReports() {
+        return this.apiService.Get(AuthApiService.serverPath + '/MyReports');
+    }
 }

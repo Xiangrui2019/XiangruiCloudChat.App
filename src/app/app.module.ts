@@ -44,6 +44,7 @@ import { GroupsApiService } from './Services/GroupsApiService';
 import { MessageService } from './Services/MessageService';
 import { InitService } from './Services/InitService';
 import { HeaderService } from './Services/HeaderService';
+import { MyReportsComponent } from './Controllers/myreports.component';
 
 @NgModule({
     imports: [
@@ -76,7 +77,8 @@ import { HeaderService } from './Services/HeaderService';
         DevicesComponent,
         ThemeComponent,
         NewsComponent,
-        ExtistionsComponent
+        ExtistionsComponent,
+        MyReportsComponent
     ],
     providers: [
         ApiService,
