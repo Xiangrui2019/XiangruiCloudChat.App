@@ -1,9 +1,14 @@
 <app-header title="我收到的所有私信" returnButton="true"></app-header>
 
-
-<div *ngFor="let report of reports" class="friendrequests" (click)="showdetil(report['reason'])">
-    <img class="user-img" src="https://oss.aiursoft.com/download/fromkey/739?w=100&h=100">
-    <div class="name">
-        {{report['reason'].substring(0, 15)}}
-    </div>
+<div *ngIf="reports.length == 0; else hasReports" class="friendrequests">
+    <h3>现在没有任何好友请求.</h3>
 </div>
+
+<ng-template #hasReports>
+    <div *ngFor="let report of reports" class="friendrequests" (click)="showdetil(report['reason'])">
+        <img class="user-img" src="https://oss.aiursoft.com/download/fromkey/739?w=100&h=100">
+        <div class="name">
+            {{report['reason'].substring(0, 15)}}
+        </div>
+    </div>
+</ng-template>
