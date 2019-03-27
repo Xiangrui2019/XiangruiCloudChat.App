@@ -22,9 +22,9 @@
 <div class="menu-holder"></div>
 <div class="menu-button" (click)="report()" *ngIf="info && messageService.me && info.id != messageService.me.id">
     <div class="img">
-        <i class="fa fa-gavel "></i>
+        <i class="fa fa-telegram"></i>
     </div>
-    <div class="text" i18n="@@Report">举报</div>
+    <div class="text" i18n="@@Report">私信</div>
 </div>
 <div class="menu-button" *ngIf="info && messageService.me && areFriends && info.id != messageService.me.id" (click)="delete(info.id)">
     <div class="img">

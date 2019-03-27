@@ -81,13 +81,12 @@ export class UserComponent implements OnInit {
 
     public report(): void {
         Swal.fire({
-            title: '举报',
+            title: '私信',
             input: 'textarea',
-            inputPlaceholder: '请输入举报信息...',
+            inputPlaceholder: '请输入私信信息...',
             inputAttributes: {
                 maxlength: '200'
             },
-            confirmButtonColor: 'red',
             showCancelButton: true,
             confirmButtonText: '举报'
           }).then((result) => {
