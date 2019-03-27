@@ -1,7 +1,7 @@
-<app-header title="我收到的所有私信" returnButton="true"></app-header>
+<app-header title="我收到的所有留言" returnButton="true"></app-header>
 
 <div *ngIf="reports.length == 0; else hasReports" class="friendrequests">
-    <h3>现在没有任何私信.</h3>
+    <h3>现在没有任何留言.</h3>
 </div>
 
 <ng-template #hasReports>

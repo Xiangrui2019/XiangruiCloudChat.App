@@ -15,7 +15,7 @@ export class MyReportsComponent implements OnInit, OnDestroy {
         private authApiService: AuthApiService,
         public headerService: HeaderService
     ) {
-        this.headerService.title = '我收到的私信';
+        this.headerService.title = '我收到的留言';
         this.headerService.returnButton = true;
         this.headerService.button = false;
         this.headerService.shadow = false;
@@ -28,7 +28,7 @@ export class MyReportsComponent implements OnInit, OnDestroy {
     }
 
     public showdetil(message: string): void {
-        Swal.fire('成功', `本条私信信息: ${message}`, 'success');
+        Swal.fire('成功', `本条留言信息: ${message}`, 'success');
     }
 
     ngOnDestroy(): void {
