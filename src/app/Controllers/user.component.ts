@@ -88,7 +88,7 @@ export class UserComponent implements OnInit {
                 maxlength: '200'
             },
             showCancelButton: true,
-            confirmButtonText: '举报'
+            confirmButtonText: '私信'
           }).then((result) => {
             if (result.value) {
                 if (result.value.length >= 5) {
@@ -99,7 +99,7 @@ export class UserComponent implements OnInit {
                             Swal.fire('失败', response.message, 'error');
                         }
                     }, () => {
-                        Swal.fire('失败', '举报错误.', 'error');
+                        Swal.fire('失败', '私信错误.', 'error');
                     });
                 } else {
                     Swal.fire('失败', '举报长度在6-100之间.', 'error');
