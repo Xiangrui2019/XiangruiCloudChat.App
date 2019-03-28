@@ -102,7 +102,7 @@ export class UserComponent implements OnInit {
                         Swal.fire('失败', '私信错误.', 'error');
                     });
                 } else {
-                    Swal.fire('失败', '举报长度在6-100之间.', 'error');
+                    Swal.fire('失败', '私信长度在6-100之间.', 'error');
                 }
             }
           });

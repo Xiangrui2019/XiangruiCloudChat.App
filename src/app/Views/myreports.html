@@ -8,7 +8,7 @@
     <div *ngFor="let report of reports" class="friendrequests" (click)="showdetil(report['reason'])">
         <img class="user-img" src="https://oss.aiursoft.com/download/fromkey/739?w=100&h=100">
         <div class="name">
-            {{report['reason'].substring(0, 15)}}
+            {{report['reason'].substring(0, 30)}}
         </div>
     </div>
 </ng-template>
