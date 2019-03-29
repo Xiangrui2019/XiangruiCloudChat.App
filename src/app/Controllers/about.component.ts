@@ -13,6 +13,7 @@ import { HeaderService } from '../Services/HeaderService';
 
 export class AboutComponent implements OnInit {
     public serverversion;
+    public thisyear;
 
     constructor(
         public checkService: CheckService,
@@ -26,8 +27,11 @@ export class AboutComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        const date = new Date();
         this.authService.Version().subscribe((data) => {
             this.serverversion = data['latestVersion'];
         });
+
+        this.thisyear =  date.getFullYear();
     }
 }
