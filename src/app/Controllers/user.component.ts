@@ -81,14 +81,14 @@ export class UserComponent implements OnInit {
 
     public report(): void {
         Swal.fire({
-            title: '私信',
+            title: '留言',
             input: 'textarea',
-            inputPlaceholder: '请输入私信信息...',
+            inputPlaceholder: '请输入留言信息...',
             inputAttributes: {
                 maxlength: '200'
             },
             showCancelButton: true,
-            confirmButtonText: '私信'
+            confirmButtonText: '留言'
           }).then((result) => {
             if (result.value) {
                 if (result.value.length >= 5) {
@@ -99,10 +99,10 @@ export class UserComponent implements OnInit {
                             Swal.fire('失败', response.message, 'error');
                         }
                     }, () => {
-                        Swal.fire('失败', '私信错误.', 'error');
+                        Swal.fire('失败', '留言错误.', 'error');
                     });
                 } else {
-                    Swal.fire('失败', '私信长度在6-100之间.', 'error');
+                    Swal.fire('失败', '留言长度在6-100之间.', 'error');
                 }
             }
           });
